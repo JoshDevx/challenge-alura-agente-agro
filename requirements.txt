@@ -5,3 +5,4 @@ langchain-experimental
 pandas
 tabulate
 python-dotenv
+langchain-community
