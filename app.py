@@ -10,7 +10,7 @@ load_dotenv()
 # Compatibilidad: Streamlit Cloud usa st.secrets, local usa .env
 if "GOOGLE_API_KEY" in st.secrets:
     os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-    os.environ["GEMINI_API_KEY"] = st.secrets["GEMINI_API_KEY"]
+    os.environ["GEMINI_API_KEY"] = st.secrets.get("GEMINI_API_KEY", st.secrets["GOOGLE_API_KEY"])
 
 st.set_page_config(page_title="Agente de Campos - Caña de Azúcar", page_icon="🌾", layout="centered")
 
