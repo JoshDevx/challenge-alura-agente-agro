@@ -180,3 +180,14 @@ suben `.env` reales al repositorio).
 
 Python · LangChain · `langchain-experimental` · Gemini API · Pandas ·
 Streamlit · Streamlit Community Cloud
+
+## Capturas del proyecto
+
+**App en funcionamiento — KPIs y chat del agente**
+![Vista general del agente](img/img_1.png)
+
+**Ejemplo de consulta respondida**
+![Ejemplo de pregunta y respuesta](img/img_2.png)
+
+**Deploy en Streamlit Community Cloud**
+![Deploy en Streamlit Cloud](img/img_3.png)
