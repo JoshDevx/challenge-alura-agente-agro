@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
 from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
-from agente.agente import crear_agente_pandas
+from agente.agente import crear_agente_pandas, extraer_texto
 
 load_dotenv()
 
@@ -108,7 +108,7 @@ if pregunta:
         )
         try:
             resultado = agente.invoke({"input": pregunta}, config={"callbacks": [callback]})
-            respuesta = resultado["output"]
+            respuesta = extraer_texto(resultado["output"])
         except Exception as error:
             respuesta = f"Ocurrió un error al procesar la consulta: {error}"
         st.markdown(respuesta)

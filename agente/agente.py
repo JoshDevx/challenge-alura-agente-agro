@@ -44,3 +44,17 @@ def crear_agente_pandas():
         number_of_head_rows=5,
     )
     return agente
+
+def extraer_texto(salida) -> str:
+    """Normaliza la salida del agente a texto plano, sea string o lista de bloques."""
+    if isinstance(salida, str):
+        return salida
+    if isinstance(salida, list):
+        partes = []
+        for bloque in salida:
+            if isinstance(bloque, dict) and bloque.get("type") == "text":
+                partes.append(bloque["text"])
+            elif isinstance(bloque, str):
+                partes.append(bloque)
+        return "\n".join(partes) if partes else str(salida)
+    return str(salida)
