@@ -30,7 +30,7 @@ def crear_agente_pandas():
     lista_df = list(dataframes.values())
     nombres = list(dataframes.keys())
 
-    modelo = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
+    modelo = ChatGoogleGenerativeAI(model="gemini-flash-lite-latest", temperature=0)
 
     agente = create_pandas_dataframe_agent(
         modelo,
