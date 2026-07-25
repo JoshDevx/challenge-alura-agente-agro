@@ -1,4 +1,5 @@
 import os
+import re
 import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
@@ -13,6 +14,10 @@ if "GOOGLE_API_KEY" in st.secrets:
     os.environ["GEMINI_API_KEY"] = st.secrets.get("GEMINI_API_KEY", st.secrets["GOOGLE_API_KEY"])
 
 st.set_page_config(page_title="Agente de Campos - Caña de Azúcar", page_icon="🌾", layout="centered")
+
+def redactar_posibles_keys(texto: str) -> str:
+    # Las API keys de Google empiezan con "AIza" seguido de 35 caracteres, con esto intento mitigar esa posible vulnerabilidad
+    return re.sub(r"AIza[0-9A-Za-z\-_]{35}", "[REDACTADO]", texto)
 
 st.title("🌾 Agente de Operaciones Agroindustriales")
 st.caption(
@@ -94,6 +99,7 @@ pregunta_escrita = st.chat_input("Escribe tu pregunta sobre los campos...")
 pregunta = pregunta_escrita or st.session_state.pregunta_pendiente
 st.session_state.pregunta_pendiente = None
 
+
 if pregunta:
     st.session_state.historial.append({"rol": "user", "texto": pregunta})
     with st.chat_message("user"):
@@ -109,8 +115,10 @@ if pregunta:
         try:
             resultado = agente.invoke({"input": pregunta}, config={"callbacks": [callback]})
             respuesta = extraer_texto(resultado["output"])
-        except Exception as error:
-            respuesta = f"Ocurrió un error al procesar la consulta: {error}"
+        except Exception:
+            respuesta = "Ocurrió un error al procesar la consulta. Intenta reformular la pregunta."
+
+        respuesta = redactar_posibles_keys(respuesta)
         st.markdown(respuesta)
 
     st.session_state.historial.append({"rol": "assistant", "texto": respuesta})

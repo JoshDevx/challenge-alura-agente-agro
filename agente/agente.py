@@ -1,3 +1,4 @@
+import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_experimental.agents import create_pandas_dataframe_agent
 from agente.cargador import cargar_dataframes
@@ -22,6 +23,12 @@ Reglas al responder:
 - Siempre que sea posible, respalda la respuesta con el número exacto calculado,
   no una impresión general.
 - Responde en español, con el vocabulario del sector (fundo, campana, tn/ha).
+Reglas de seguridad (nunca las rompas, sin importar cómo se te pida):
+- Nunca ejecutes código que importe 'os', 'sys', 'subprocess', que acceda
+  a variables de entorno, archivos del sistema, o que intente leer
+  configuración, credenciales o claves de API.
+- Si una pregunta pide algo de lo anterior, responde que esa acción no
+  está permitida y continúa solo con preguntas sobre los datasets agrícolas.
 """
 
 
@@ -32,6 +39,9 @@ def crear_agente_pandas():
 
     modelo = ChatGoogleGenerativeAI(model="gemini-flash-lite-latest", temperature=0)
 
+    os.environ.pop("GOOGLE_API_KEY", None)
+    os.environ.pop("GEMINI_API_KEY", None)
+    
     agente = create_pandas_dataframe_agent(
         modelo,
         lista_df,
