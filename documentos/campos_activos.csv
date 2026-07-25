@@ -1,0 +1,13 @@
+codigo_campo,fundo,variedad,hectareas,fecha_siembra,dias_transcurridos,estado,ultima_biometria,volumen_riego_acumulado_m3,cumplimiento_riego_pct
+C-1041,La Esperanza,H2,27.0,2025-09-11,317,maduración,2026-07-17,5655.0,80.6
+C-1042,Los Álamos,CP-01,23.8,2026-03-25,122,desarrollo vegetativo,2026-07-20,7167.0,87.9
+C-1043,Los Álamos,H2,24.3,2025-09-20,308,maduración,2026-07-16,4434.0,100.0
+C-1044,Santa Rosa,H1,26.6,2026-01-01,205,desarrollo vegetativo,2026-07-19,5137.0,100.0
+C-1045,San Ramón,Q-208,20.0,2025-10-06,292,maduración,2026-07-18,3619.0,97.0
+C-1046,Santa Rosa,H1,17.9,2026-04-20,96,establecimiento,2026-07-19,4345.0,93.3
+C-1047,El Palmar,H1,17.5,2025-11-06,261,maduración,2026-07-22,3706.0,84.8
+C-1048,Los Álamos,CP-01,33.1,2025-10-05,293,maduración,2026-07-18,3529.0,64.3
+C-1049,La Esperanza,Q-208,20.6,2026-03-03,144,desarrollo vegetativo,2026-07-22,6964.0,100.0
+C-1050,San Ramón,Q-208,24.9,2026-05-16,70,establecimiento,2026-07-18,8379.0,74.1
+C-1051,San Ramón,H1,30.4,2026-04-02,114,establecimiento,2026-07-21,5108.0,80.8
+C-1052,El Palmar,H1,8.7,2026-03-31,116,establecimiento,2026-07-19,5207.0,81.1
